@@ -15,6 +15,8 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.sala = juego.sala;
         return View();
     }
+    
 }
