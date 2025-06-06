@@ -3,14 +3,16 @@ using Newtonsoft.Json;
 public class juego{
 
     [JsonProperty]
-    private Dictionary <int, string> respuestas = new Dictionary<int, string>();
+    public Dictionary <int, string> respuestas {get; private set;}= new Dictionary<int, string>();
+    public Dictionary <int, string> pistas {get; private set;}= new Dictionary<int, string>();
     
     [JsonProperty]
     public int sala {get; private set;}
+     
+     [JsonProperty]
 
-    [JsonProperty]
-     private Dictionary <int, string> pistas = new Dictionary<int, string>();
-
+     public string usuario {get; private set;}
+     
 public juego ()
 {
   respuestas.Add(1,"teclado");
@@ -22,7 +24,6 @@ public juego ()
   pistas.Add(3,"Presta atención a los dos diccionarios");
   pistas.Add(4,"Acordate hasta la decima combinación");
   sala = 1;
-  
 }
 
 }

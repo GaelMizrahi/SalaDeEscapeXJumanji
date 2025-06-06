@@ -1,0 +1,8 @@
+@{
+    ViewData["Title"] = "Ingrese tu nombre para seguir";
+}
+<form action='@Url.Action("sala1", "Home")' method="post">
+  Ingrese tu nombre: <input type="text" name="nombre" required>
+  <input type="submit" value="Entrar">
+</form>
+

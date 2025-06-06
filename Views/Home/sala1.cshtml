@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "SALA 1 - EL SUSURRO";
+}
+<h1>BIENVENIDOS A LA SALA DEL SUSURRO</h1>
+
+<h3>Escuchá atentamente, ellos intentan ayudarte, no te preocupes</h3>
+
+<form action='@Url.Action("comparar", "Home")' method="post">
+  CODIGO: <input type="text" name="codigo" required>
+  <input type="submit" value="Entrar">
+</form>
