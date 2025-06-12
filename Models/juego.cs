@@ -16,7 +16,7 @@ public class juego{
 public juego ()
 {
   respuestas.Add(1,"teclado");
-  respuestas.Add(2,"pelota");
+  respuestas.Add(2,"sara");
   respuestas.Add(3,"me encanta programar");
   respuestas.Add(4,"ARVYVARAYV");
   pistas.Add(1,"Escucha atentamente");
@@ -24,6 +24,14 @@ public juego ()
   pistas.Add(3,"Presta atención a los dos diccionarios");
   pistas.Add(4,"Acordate hasta la decima combinación");
   sala = 1;
+}
+
+public bool compararRespuesta (string codigo, int sala){
+  bool ganar = false;
+  if (codigo == respuestas[sala]){
+    ganar = true;
+  }
+  return ganar;
 }
 
 }

@@ -5,4 +5,9 @@
 <h1>BIENVENIDOS A LA SALA DE LA ILUSIÓN</h1>
 <h3>Mira con atención para descubrir la palabra oculta en la imagen, puede ser más compleja de lo visible</h3>
 
-<img src="~/imgs/2.png" alt="Sala 2">
+<img src="~/imgs/imgocul.jpg" alt="Sala 2">
+
+<form action='@Url.Action("comparar", "Home")' method="post">
+  CODIGO: <input type="text" name="codigo" required>
+  <input type="submit" value="Entrar">
+</form>

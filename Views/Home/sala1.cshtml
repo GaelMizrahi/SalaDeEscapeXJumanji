@@ -5,7 +5,15 @@
 
 <h3>Escuchá atentamente, ellos intentan ayudarte, no te preocupes</h3>
 
+<audio controls autoplay>
+  <source src="~/audios/audi.m4a" type="audio/mpeg">
+  Tu navegador no soporta el audio.
+</audio>
+
 <form action='@Url.Action("comparar", "Home")' method="post">
   CODIGO: <input type="text" name="codigo" required>
   <input type="submit" value="Entrar">
 </form>
+
+
+  

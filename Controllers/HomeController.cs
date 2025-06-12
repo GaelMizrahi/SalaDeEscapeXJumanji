@@ -21,55 +21,29 @@ public class HomeController : Controller
     public IActionResult sala1()
     {
 
-        ViewBag.juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("jugar"));
+        juego juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("jugar"));
         return View("sala1");
+    }
+    public IActionResult tutorial()
+    {
+        return View("tutorial");
+    }
+    public IActionResult creadores(){
+        return View("creadores");
     }
     public IActionResult comparar(string codigo)
     {
-        ViewBag.juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("jugar"));
-        if (ViewBag.juego.respuestas[ViewBag.juego.sala] == codigo)
-        {
-          
-        }
+        juego juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("jugar"));
+        ViewBag.ganar = juego.compararRespuesta(codigo.ToLower(), juego.sala);
+        if (ViewBag.ganar) ViewBag.sala = "sala" + juego.sala + 1;
+        else ViewBag.sala = "index";
+        return View(ViewBag.sala);
     }
-}
-public IActionResult sala2()
-{
-    ViewBag.jugar = Objeto.StringToObject<juego>(HttpContext.Session.GetString("jugar"));
-    return View("sala2");
-}
-public IActionResult sala3()
-{
-    ViewBag.jugar = Objeto.StringToObject<juego>(HttpContext.Session.GetString("jugar"));
-    return View("sala3");
-}
-public IActionResult sala4()
-{
-    ViewBag.jugar = Objeto.StringToObject<juego>(HttpContext.Session.GetString("jugar"));
-    return View("sala4");
-}
-public IActionResult creadores()
-{
-    return View("creadores");
-}
-public IActionResult tutorial()
-{
-    return View("tutorial");
-}
-public IActionResult prejugar()
-{
-    return View("prejugar");
-}
-public class CuentaController : Controller
-{
-    [HttpPost]
-    public ActionResult Login(string usuario, string contrasena)
+    public IActionResult pistas()
     {
-        // Aquí podrías validar usuario y contraseña si quisieras.
-
-        ViewBag.Usuario = usuario;
-        return View("sala1");
+        juego juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("jugar"));
+        ViewBag.sala = "pista" + juego.sala;
+        return (ViewBag.sala);
     }
 
 }
-    }
