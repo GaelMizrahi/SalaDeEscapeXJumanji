@@ -18,32 +18,41 @@ public class HomeController : Controller
         HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
         return View();
     }
+    public IActionResult RegresarSala()
+    {
+        juego juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("juego"));
+        ViewBag.sala = "sala" + juego.sala;
+        return View(ViewBag.sala);
+    }
+
     public IActionResult sala1()
     {
-
-        juego juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("jugar"));
         return View("sala1");
     }
     public IActionResult tutorial()
     {
         return View("tutorial");
     }
-    public IActionResult creadores(){
+    public IActionResult creadores()
+    {
         return View("creadores");
     }
     public IActionResult comparar(string codigo)
     {
-        juego juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("jugar"));
-        ViewBag.ganar = juego.compararRespuesta(codigo.ToLower(), juego.sala);
-        if (ViewBag.ganar) ViewBag.sala = "sala" + juego.sala + 1;
+        juego juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("juego"));
+        ViewBag.ganar = juego.compararRespuesta(codigo.ToLower());
+        if (ViewBag.ganar)  ViewBag.sala = "sala" + juego.sala;
         else ViewBag.sala = "index";
+
+        HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
         return View(ViewBag.sala);
     }
     public IActionResult pistas()
     {
-        juego juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("jugar"));
+        juego juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("juego"));
         ViewBag.sala = "pista" + juego.sala;
-        return (ViewBag.sala);
+        ViewBag.pista = juego.pistas[juego.sala];
+        return View (ViewBag.sala);
     }
 
 }
