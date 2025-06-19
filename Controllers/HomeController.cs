@@ -41,9 +41,24 @@ public class HomeController : Controller
     {
         juego juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("juego"));
         ViewBag.ganar = juego.compararRespuesta(codigo.ToLower());
-        if (ViewBag.ganar)  ViewBag.sala = "sala" + juego.sala;
+        if (ViewBag.ganar) ViewBag.sala = "sala" + juego.sala;
         else ViewBag.sala = "index";
 
+        HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
+        return View(ViewBag.sala);
+    }
+
+    public IActionResult compararC(char letra)
+    {
+        juego juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("juego"));
+        ViewBag.resp = juego.respuestas[5];
+        if (letra == ViewBag.resp[i])
+        {
+            ViewBag.letras.Add(letra);
+            Viewbag.sala = "sala" + 5;
+        }
+        else ViewBag.sala = "index";
+        i++;
         HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
         return View(ViewBag.sala);
     }
@@ -52,7 +67,7 @@ public class HomeController : Controller
         juego juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("juego"));
         ViewBag.sala = "pista" + juego.sala;
         ViewBag.pista = juego.pistas[juego.sala];
-        return View (ViewBag.sala);
+        return View(ViewBag.sala);
     }
 
 }

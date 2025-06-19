@@ -19,12 +19,14 @@ public juego ()
   respuestas.Add("teclado");
   respuestas.Add("sara");
   respuestas.Add("me encanta programar");
+  respuestas.Add("sandia");
   respuestas.Add("ARVYVARAYV");
   pistas.Add("");
   pistas.Add("Escucha atentamente");
-  pistas.Add("Entrecerra los ojos");
+  pistas.Add("A veces tu mejor aliado es el 'Ctrl' + '-'");
   pistas.Add("Presta atención a los dos diccionarios");
   pistas.Add("Encuentra la/s diferencia/s");
+  pistas.Add("Dale flaco, es un simon, no necesitas pista");
   sala = 1;
 }
 
