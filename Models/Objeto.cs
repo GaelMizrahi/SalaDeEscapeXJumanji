@@ -34,7 +34,5 @@ public class palabra
     public int sala{get; private set;}
     public int vidas{get; private set;}
     public Dictionary<int,string> respuestas{get; private set;}
-    
-
 
 }

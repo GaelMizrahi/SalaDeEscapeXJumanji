@@ -48,17 +48,13 @@ public class HomeController : Controller
         return View(ViewBag.sala);
     }
 
-   public IActionResult compararC(char letra)
+   public IActionResult compararC(char Letra)
     {
         juego juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("juego"));
-        ViewBag.resp = juego.respuestas[5];
-        ViewBag.letras.Add(letra);
-        if (ViewBag.Letras.Count() == ViewBag.resp.Count())
-        {
-            if (ViewBag.letras == ViewBag.resp())   ViewBag.sala = "sala6";
-            else ViewBag.sala = "index";
-        } else ViewBag.sala = "sala5";
-
+        bool ganar = juego.compararC(Letra);
+        if (juego.letras.Count == 10 && ganar) ViewBag.sala = "sala6";
+        else if (juego.letras.Count < 10 && ganar) ViewBag.sala = "sala5";
+        else if (!ganar) ViewBag.Sala = "Index";
         HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
         return View(ViewBag.sala);
     }
