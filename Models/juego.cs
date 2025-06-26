@@ -56,7 +56,7 @@ public class juego
             if (letras[i] == palabra[i])
             {
                 ganar = true;
-            }
+            }else ganar = false;
         }
 
         return ganar;
