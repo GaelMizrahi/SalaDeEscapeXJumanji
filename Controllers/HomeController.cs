@@ -42,7 +42,7 @@ public class HomeController : Controller
         juego juego = Objeto.StringToObject<juego>(HttpContext.Session.GetString("juego"));
         ViewBag.ganar = juego.compararRespuesta(codigo.ToLower());
         if (ViewBag.ganar) ViewBag.sala = "sala" + juego.sala;
-        else ViewBag.sala = "index";
+        else return RedirectToAction("Index");
 
         HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
         return View(ViewBag.sala);
@@ -54,7 +54,7 @@ public class HomeController : Controller
         bool ganar = juego.compararC(Letra);
         if (juego.letras.Count == 10 && ganar) ViewBag.sala = "sala6";
         else if (juego.letras.Count < 10 && ganar) ViewBag.sala = "sala5";
-        else if (!ganar) ViewBag.Sala = "Index";
+        else if (!ganar) return RedirectToAction("Index");
         HttpContext.Session.SetString("juego", Objeto.ObjectToString(juego));
         return View(ViewBag.sala);
     }
